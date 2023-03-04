@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Random;
 
 public class DeckOfCards {
-  private final List<PlayingCard> deck;
+  private List<PlayingCard> deck;
   private final Random randomizer = new Random();
 
   public DeckOfCards() {
     deck = new ArrayList<>();
+    shuffleDeck();
+  }
 
+  private void shuffleDeck() {
+    deck = new ArrayList<>();
     char[] suits = {'S', 'H', 'D', 'C'};
     for (char suit : suits) {
       for (int j = 1; j <= 13; j++) {
@@ -20,9 +24,12 @@ public class DeckOfCards {
   }
 
   public CardHand dealHand(int n) {
+    shuffleDeck();
     List<PlayingCard> hand = new ArrayList<>();
     for (int i = 0; i < n; i++) {
-      hand.add(deck.get(randomizer.nextInt(52)));
+      int index = randomizer.nextInt(deck.size());
+      hand.add(deck.get(index));
+      deck.remove(index);
     }
     return new CardHand(hand);
   }

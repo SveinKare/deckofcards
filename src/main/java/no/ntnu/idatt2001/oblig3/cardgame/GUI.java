@@ -282,7 +282,7 @@ public class GUI extends Application {
             .filter(card -> card.getSuit() == 'H')
             .toList();
     return hearts.isEmpty() ? "No hearts" : hearts.stream()
-            .map(card -> String.format("%c%d ", card.getSuit(), card.getFace()))
+            .map(card -> card.getAsString() + " ")
             .reduce("", String::concat);
   }
 

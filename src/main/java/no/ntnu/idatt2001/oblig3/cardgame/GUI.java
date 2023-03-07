@@ -25,6 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The GUI of the application.
+ */
 public class GUI extends Application {
   private final DeckOfCards deck = new DeckOfCards();
   private CardHand hand = deck.dealHand(5);
@@ -40,6 +43,11 @@ public class GUI extends Application {
     launch();
   }
 
+  /**
+   * Creates the main stage.
+   *
+   * @param primary (Stage) The starting stage.
+   */
   @Override
   public void start(Stage primary) {
     primary.setTitle("Texas Fold'em");

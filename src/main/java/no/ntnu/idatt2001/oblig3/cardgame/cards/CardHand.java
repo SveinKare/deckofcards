@@ -2,9 +2,20 @@ package no.ntnu.idatt2001.oblig3.cardgame.cards;
 
 import java.util.List;
 
+/**
+ * Represents a hand of playing cards.
+ *
+ * @author Svein Kåre Sørestad
+ * @version 1.0
+ */
 public class CardHand {
   private final List<PlayingCard> hand;
 
+  /**
+   * Constructor. Throws exception if parameter is {@code null} or empty.
+   *
+   * @param hand (List) A list of playing cards to be added to the hand.
+   */
   public CardHand(List<PlayingCard> hand) {
     if (hand == null) {
       throw new IllegalArgumentException("Card hand cannot be null");

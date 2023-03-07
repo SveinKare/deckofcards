@@ -4,15 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents a deck of playing cards.
+ *
+ * @author Svein Kåre Sørestad
+ * @version 1.0
+ */
 public class DeckOfCards {
   private List<PlayingCard> deck;
   private final Random randomizer = new Random();
 
+  /**
+   * Constructor. Creates a new deck and puts all 52 cards in a card deck in it.
+   */
   public DeckOfCards() {
     deck = new ArrayList<>();
     shuffleDeck();
   }
 
+  /**
+   * Resets the deck.
+   */
   private void shuffleDeck() {
     deck = new ArrayList<>();
     char[] suits = {'S', 'H', 'D', 'C'};
@@ -23,6 +35,12 @@ public class DeckOfCards {
     }
   }
 
+  /**
+   * Deals a random card hand.
+   *
+   * @param n (int) The amount of cards to be dealt.
+   * @return        A randomly dealt card hand.
+   */
   public CardHand dealHand(int n) {
     if (n < 1) {
       throw new IllegalArgumentException("Parameter cannot be less than 0.");

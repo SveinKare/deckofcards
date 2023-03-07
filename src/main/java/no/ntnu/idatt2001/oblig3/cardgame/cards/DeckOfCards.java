@@ -24,6 +24,9 @@ public class DeckOfCards {
   }
 
   public CardHand dealHand(int n) {
+    if (n < 1) {
+      throw new IllegalArgumentException("Parameter cannot be less than 0.");
+    }
     shuffleDeck();
     List<PlayingCard> hand = new ArrayList<>();
     for (int i = 0; i < n; i++) {

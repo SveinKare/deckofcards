@@ -260,60 +260,12 @@ public class GUI extends Application {
   }
 
   /**
-   * Sums up the faces of all the cards. Ace is counted as 1.
-   *
-   * @return The sum of all the cards in the hand.
+   * Checks the current hand.
    */
-  private int sumCards() {
-    return hand.getHand()
-            .stream()
-            .map(PlayingCard::getFace)
-            .reduce(0, Integer::sum);
-  }
-
-  /**
-   * Gets a list of all the cards of the suit hearts currently in the hand.
-   *
-   * @return A list of all the cards of the suit hearts.
-   */
-  private String getAllHeartCards() {
-    List<PlayingCard> hearts = hand.getHand()
-            .stream()
-            .filter(card -> card.getSuit() == 'H')
-            .toList();
-    return hearts.isEmpty() ? "No hearts" : hearts.stream()
-            .map(card -> card.getAsString() + " ")
-            .reduce("", String::concat);
-  }
-
-  /**
-   * Checks if the current hand has the queen of spades.
-   *
-   * @return {@code true} if the queen of spades is in the hand, {@code false} if not.
-   */
-  private boolean isQueenOfSpadesInHand() {
-    return hand.getHand()
-            .stream()
-            .anyMatch(card -> card.getSuit() == 'S' && card.getFace() == 12);
-  }
-
-  /**
-   * Checks if the current hand is a flush.
-   *
-   * @return {@code true} if it is a flush, {@code false} if not.
-   */
-  private boolean isHandFlush() {
-    return hand.getHand()
-                   .stream()
-                   .map(PlayingCard::getSuit)
-                   .distinct()
-                   .toList().size() == 1;
-  }
-
   private void checkCurrentHand() {
-    sumOfCardsField.setText(String.format("%d", sumCards()));
-    cardsOfHeartsField.setText(getAllHeartCards());
-    queenOfSpadesInHandField.setText(isQueenOfSpadesInHand() ? "Yes" : "No");
-    handIsFlushField.setText(isHandFlush() ? "Yes" : "No");
+    sumOfCardsField.setText(String.format("%d", hand.sumCards()));
+    cardsOfHeartsField.setText(hand.getAllHeartCards());
+    queenOfSpadesInHandField.setText(hand.isQueenOfSpadesInHand() ? "Yes" : "No");
+    handIsFlushField.setText(hand.isHandFlush() ? "Yes" : "No");
   }
 }
